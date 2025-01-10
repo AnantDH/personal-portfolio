@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #B85042;
+  background-color: #378cb6;
   z-index: 1000;
   padding: 10px 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -19,6 +19,31 @@
   transform: translateY(0); /* Move into view */
   opacity: 1; /* Fully visible */
 }
+
+.active-link {
+  position: relative;
+  color: #000000;
+  font-weight: bold;
+}
+
+.active-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background-color: #A7BEAE;
+  transform: scaleX(1);
+  transform-origin: right;
+  transition: transform 0.3s ease-out;
+}
+
+.active-link:hover::after {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
 
 .navbar {
   display: flex;

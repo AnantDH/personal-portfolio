@@ -11,7 +11,7 @@ function App() {
     // Handle scroll behavior
     useEffect(() => {
       const handleScroll = () => {
-        if (window.scrollY > 10) {
+        if (window.scrollY > 20) {
           setshowNavbar(true); // Show navbar after scrolling 10px
           setShowMouse(false);
         } else {
@@ -31,7 +31,7 @@ function App() {
     <Router>
       <Header showNavbar={showNavbar}/>
       <Routes>
-        <Route path="/" element={<Home showMouse={showMouse}/>} />
+        <Route path="/" element={<Home showMouse={ showMouse }/>} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
     </Router>
