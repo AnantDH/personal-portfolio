@@ -1,15 +1,16 @@
 import './Home.css';
 
-const Home = () => {
+const Home = ({ showMouse }) => {
     return (
         <>
             <div className='container'>
                 <h1 className='container-title'>Anant Dhokia</h1>
             </div>
-
-            <div class="scroll-down">
-                <div className='mouse'></div>
-            </div>
+                <div className="scroll-down">
+                    <div className={`scroll-down ${!showMouse ? 'hidden' : ''}`}>
+                        <div className="mouse"></div>
+                    </div>
+                </div>
 
             <div className='spacer'></div>
 
@@ -20,7 +21,7 @@ const Home = () => {
 
             <div className='spacer'></div>
         </>
-    )
-}
+    );
+};
 
 export default Home;

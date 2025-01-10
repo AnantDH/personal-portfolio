@@ -6,14 +6,17 @@ import { BrowserRouter as Router,  Routes, Route} from 'react-router-dom';
 
 function App() {
   const [showNavbar, setshowNavbar] = useState(false);
+  const [showMouse, setShowMouse] = useState(true);
 
     // Handle scroll behavior
     useEffect(() => {
       const handleScroll = () => {
         if (window.scrollY > 10) {
-          setshowNavbar(true); // Show navbar after scrolling 50px
+          setshowNavbar(true); // Show navbar after scrolling 10px
+          setShowMouse(false);
         } else {
           setshowNavbar(false); // Hide navbar when near the top
+          setShowMouse(true);
         }
       };
   
@@ -28,7 +31,7 @@ function App() {
     <Router>
       <Header showNavbar={showNavbar}/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home showMouse={showMouse}/>} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
     </Router>

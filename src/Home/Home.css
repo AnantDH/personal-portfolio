@@ -18,12 +18,22 @@
     left: 50%;
     transform: translateX(-50%);
     padding-bottom: 2vh;
+
+    /* Add transition for fade effect */
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+.scroll-down.hidden {
+    opacity: 0;
+    visibility: hidden; /* Ensures the element is completely hidden */
 }
 
 .mouse {
 	width: 30px;
 	height: 55px;
-	border: 2.5px solid #333;
+	border: 2.5px solid #E7E8D1;
 	border-radius: 60px;
 	position: relative;
 	&::before {
@@ -34,7 +44,7 @@
 		top: 10px;
 		left: 50%;
 		transform: translateX(-50%);
-		background-color: #333;
+		background-color: #E7E8D1;
 		border-radius: 50%;
 		opacity: 1;
 		animation: wheel 2s infinite;
