@@ -61,43 +61,87 @@
 
 
 .container-content {
-	margin-top: 20vh; /* Adjust the vertical position */
-	display: flex; /* Arrange children in a row */
-	flex-wrap: wrap; /* Allow wrapping for smaller screens */
-	justify-content: space-around; /* Spread items evenly */
-	align-items: center; /* Vertically align items */
-	padding: 0 5%; /* Add padding to prevent items from touching screen edges */
-	gap: 20px; /* Add space between the items */
+    margin-top: 20vh; /* Adjust the vertical position */
+    display: flex; /* Arrange children in a row */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: space-between; /* Spread items to fill available space */
+    align-items: center; /* Vertically align items */
+    padding: 0 5%; /* Add padding to prevent items from touching screen edges */
+    gap: 20px; /* Add space between the items */
 }
 
 .sub-container {
     flex: 2; /* Allow the text container to grow or shrink proportionally */
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Align text to the left */
     justify-content: center;
-    padding: 0 5%; /* Add padding inside the container */
     max-width: 800px; /* Limit the width of the text for readability */
+    width: 60%; /* Default width for text container */
+    padding: 0 2%; /* Add padding inside the container */
 }
 
-
 .intro-header {
-	font-size: 2em;
-	color: #000000;
-	/* transform: translateX(-2vw); */
+    font-size: 2em;
+    color: #000000;
 }
 
 .intro-paragraph {
-	font-size: 1.5em;
-	color: #E7E8D1;
-	width: 65%;
+    font-size: 1.2em; /* Adjust font size for readability */
+    color: #E7E8D1;
+    line-height: 1.6; /* Add spacing between lines */
 }
 
 .image {
     flex: 1; /* Allow the image to grow or shrink proportionally */
-    max-width: 60%; /* Prevent the image from exceeding its container's width */
+    max-width: 40%; /* Limit the image's width relative to the container */
     max-height: 55vh; /* Keep the image responsive to the viewport height */
-    height: auto; /* Maintain aspect ratio */
     object-fit: contain; /* Ensure the image fits well without distortion */
-    margin-right: 5%; /* Add spacing between image and text */
+    height: auto; /* Maintain aspect ratio */
+}
+
+@media (max-width: 768px) {
+    .container-content {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .sub-container {
+        width: 100%; /* Text container takes full width */
+        max-width: none; /* Remove max-width constraint */
+        text-align: left; /* Center-align text on smaller screens */
+    }
+
+    .intro-paragraph {
+        font-size: 1.1em; /* Adjust font size for smaller screens */
+        width: 90%; /* Make text take up more screen width */
+        margin: 0 auto; /* Center text horizontally */
+    }
+
+    .image {
+        max-width: 60%; /* Adjust image width for smaller screens */
+        margin: 20px auto 0; /* Center the image and add spacing */
+    }
+}
+
+/* Larger Screens (e.g., Desktops) */
+@media (min-width: 1024px) {
+    .container-content {
+        min-height: 80vh; /* Ensure the container takes up most of the screen height */
+    }
+
+    .sub-container {
+        justify-content: center; /* Center the text vertically */
+        align-items: center; /* Center the text horizontally */
+        text-align: left; /* Center-align the text for aesthetic balance */
+    }
+
+    .intro-paragraph {
+        font-size: 1.8em; /* Make the text larger */
+        line-height: 1.8; /* Add extra spacing for better readability */
+        width: 100%; /* Increase the text block width for balance */
+    }
+
+    .intro-header {
+        font-size: 3em; /* Increase header size for emphasis */
+		text-align: left;
+    }
 }

@@ -8,23 +8,32 @@ function App() {
   const [showNavbar, setshowNavbar] = useState(false);
   const [showMouse, setShowMouse] = useState(true);
 
-    // Handle scroll behavior
-    useEffect(() => {
-      const handleScroll = () => {
+  useEffect(() => {
+    let timeoutId = null; // Timeout ID for debouncing
+
+    const handleScroll = () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+
+      // Debounce the scroll behavior
+      timeoutId = setTimeout(() => {
         if (window.scrollY > 20) {
-          setshowNavbar(true); // Show navbar after scrolling 10px
+          setshowNavbar(true); // Show navbar after scrolling 20px
           setShowMouse(false);
         } else {
           setshowNavbar(false); // Hide navbar when near the top
           setShowMouse(true);
         }
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, []);
+      }, 100); // Adjust debounce time as needed
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timeoutId); // Cleanup the timeout
+    };
+  }, []);
 
   return (
     <>
